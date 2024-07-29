@@ -20,7 +20,7 @@ console.log(isJohn)
 function greet(firstName , lastName){
    let fullName = firstName + " " + lastName;
 
-    return "Hello, " + fullName.toUpperCase() + "! Welcome to the IITC Bootcamp."
+    return "Hello, " + fullName.toUpperCase() + "! Welcome to the IITC Bootcamp.";
 }
 
 console.log(greet("maor" , "shmueli"));
