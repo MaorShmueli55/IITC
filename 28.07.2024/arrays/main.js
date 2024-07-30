@@ -200,15 +200,17 @@ fruit1.push("orange");
 numbers7.pop();
 //23
 colors100.push("pink" , "brown" , "silver");
+
 //24
-// let emArray = [];
-// for(i=1; i = 6; i++){
-//     emArray.push(i);
-// }
-// //25
-// for(i=0; i = 5; i++){
-//     console.log(emArray.pop(i));
-// }
+let emArray = [];
+for(i=1; i < 6; i++){
+    emArray.push(i);
+}
+console.log(emArray);
+//25
+for(i=0; i < 6; i++){
+    console.log(emArray.pop(i));
+}
 
 //26
 fruit1.unshift("mango");
@@ -218,15 +220,15 @@ numbers7.shift();
 numbers7.unshift(1 ,2 ,3);
 console.log(numbers7);
 //29
-// let tt = [];
-// for(i = 0; i = 6; i++){
-//     tt = tt.unshift(i);
-// }
-// console.log(tt);
-// //30
-// for(i=0; i = 6; i++){
-//      console.log(tt.shift(i));
-//  }
+let tt = [];
+for(i = 0; i < 6; i++){
+    tt = tt.unshift(i);
+}
+console.log(tt);
+//30
+for(i=0; i < 6; i++){
+     console.log(tt.shift(i));
+ }
 
 
 //31

@@ -120,7 +120,7 @@ do{
 
 //Additional JavaScript Loops Exercises
 //1
-for(i = 0; i>21; i++){
+for(i = 1; i <= 20; i++){
     console.log(i);
 }
 //2
@@ -281,6 +281,7 @@ console.log(divisor);
 
 
 
+//22
 
 
 //23
