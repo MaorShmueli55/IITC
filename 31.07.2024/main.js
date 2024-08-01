@@ -145,6 +145,67 @@ bankAccount.withdraw(700000000);
 
 
 //13
+let circle = {
+    radius: 5,
+    color: "black"
+};
+
+function calculateArea(){
+    return (Math.PI*circle.radius^2);
+}
+
+function calculateCircumference(){
+    return (2*Math.PI*circle.radius);
+}
+
+//14
+let student = {
+    name: "Maor",
+    grades: [90 , 85 , 78],
+    calculateAverage: function(){
+        let average = this.grades.reduce(function myFun (total , num){
+            return total + num;
+        } , 0) / this.grades.length
+        console.log(`The average is ${average}`);
+    },
+    getLetterGrade: function(){
+        let letter = [this.grades.map(function  myFunn (num){
+        if(num  >= 90) return "A";
+        else if(num >= 80) return "B";
+        else if (num >= 70) return"C";
+        else if (num >= 60) return "D";
+        else return "F";
+    })]
+    console.log(letter);
+}
+};
+
+
+student.calculateAverage();
+student.getLetterGrade();
+
+
+//15
+let todoList = {
+    tasks: ["homework" , "shopping" , "training"],
+    comletedTasks: ["make a dinner" , "go to gym"],
+    addTask: function (task){
+        this.tasks.push(task);
+    },
+    displayTask: function (){
+        console.log(this);
+       }
+    ,
+    completeTask: function(task){
+        this.comletedTasks.push(task)
+    }
+};
+
+todoList.displayTask();
+
+
+
+
 
 
 

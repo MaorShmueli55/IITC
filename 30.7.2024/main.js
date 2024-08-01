@@ -173,6 +173,30 @@ function characterFrequency(str){
 
 characterFrequency("hello");
 
+
+function countFrequency(str){
+    let freqtObject = {};
+    for(let i = 0; i < str.length; i++){
+        if(!freqtObject[str[i]]){
+        for(let j = 0; j < str.length; j++){
+            if(str[i] === str[j]){
+                if(!freqtObject[str[i]]){
+                    freqtObject[str[i]] = 1;
+                }
+                else freqtObject[str[i]] += 1
+            }
+        }
+      }
+    }
+    console.log(freqtObject);
+
+}
+countFrequency("hello")
+
+
+
+
+
 //9
 // Flatten a 2D Array
 // Objective: Convert a 2D array into a 1D array.
