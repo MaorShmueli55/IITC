@@ -178,15 +178,15 @@ function countFrequency(str){
     let freqtObject = {};
     for(let i = 0; i < str.length; i++){
         if(!freqtObject[str[i]]){
-        for(let j = 0; j < str.length; j++){
+          for(let j = 0; j < str.length; j++){
             if(str[i] === str[j]){
                 if(!freqtObject[str[i]]){
                     freqtObject[str[i]] = 1;
                 }
                 else freqtObject[str[i]] += 1
             }
+          }
         }
-      }
     }
     console.log(freqtObject);
 

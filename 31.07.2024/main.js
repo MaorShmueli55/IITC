@@ -193,18 +193,106 @@ let todoList = {
         this.tasks.push(task);
     },
     displayTask: function (){
-        console.log(this);
-       }
-    ,
+        console.log(this.tasks);
+       },
     completeTask: function(task){
         this.comletedTasks.push(task)
+        this.tasks = this.tasks.filter(function move(word){
+            return word !== task;
+        })
     }
 };
 
 todoList.displayTask();
+todoList.completeTask("homework")
+todoList.displayTask();
+// console.log(todoList.comletedTasks);
+
+//16
+book = {
+    titel: "IITC" ,
+    author: "Maor",
+    isbn: "111111",
+    isAvailable: true,
+    checkOut: function (){
+        if(this.isAvailable){
+            this.isAvailable = false;
+            console.log(`You check out the book ${this.titel}`);
+        }
+        else{
+            console.log(`The book ${this.titel} is not active.`);
+        }
+    },
+    return: function(){
+        this.isAvailable = true;
+        console.log(`You return the book ${this.titel}.`);
+    }
+};
+
+book.checkOut();
+book.checkOut();
+book.return();
+book.checkOut();
+
+
+// //17
+// let colorMixer = {
+//     color1: "black",
+//     color2: "white",
+
+
+// };
 
 
 
+//18
+let tempConverter = {
+    celsius: 0 ,
+    fahrenheit: 0 ,
+    setC: function (temp){
+        this.celsius = temp;
+        this.fahrenheit = (temp*9)/5 + 32;
+    },
+    setF: function (temp){
+        this.fahrenheit = temp;
+        this.celsius = (temp-32)*5/9;
+    },
+    getC: function(){
+        console.log(`The temperature is ${this.celsius} celsius`);
+    },
+    getF: function(){
+        console.log(`The temperature is ${this.fahrenheit} fahrenheit`);
+    }
+  
+};
+
+tempConverter.setC(25);
+tempConverter.getC();
+tempConverter.getF();
+
+//19
+let pet = {
+    name: "tokyo",
+    type: "dog",
+    hunger: 5,
+    happiness: 10,
+    feed: function(){
+        this.hunger += 3;
+    },
+    play: function(){
+        this.happiness += 3;
+    },
+    getStatus: function(){
+        console.log(`the happiness is ${this.happiness} and the hunger is ${this.hunger}.`);
+    }
+};
+
+pet.getStatus();
+pet.play();
+pet.feed();
+pet.getStatus();
+
+//20
 
 
 
