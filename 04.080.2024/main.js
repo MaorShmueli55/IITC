@@ -75,7 +75,7 @@ let person = {
 
 // TODO: Write a function to update the person's city
 function updateCity(person, newCity) {
-  person.city = newCity
+  person.address.city = newCity
 }
 
 updateCity(person, "Los Angeles");
@@ -145,13 +145,7 @@ let product = {
 
 // TODO: Write a function to toggle the product's availability
 function toggleAvailability(product) {
-  if(product.isAvailable){
-    product.isAvailable = false;
-  }
-  else{
-     product.isAvailable = true;
-  }
-  return product;
+  product.isAvailable = !product.isAvailable;
 }
 
 toggleAvailability(product);
@@ -167,7 +161,13 @@ console.log("Updated Product:", product);
 
 // TODO: Write a function to remove a category from the product
 function removeCategory(product, category) {
-  product.categories.pop(category);
+  let catArray = product.categories;
+  for(let i = 0; i< catArray.length; i++){
+    if(catArray[i] === category){
+        product.categories.splice(i, 1);
+        return;
+    }
+  }
 }
 
 removeCategory(product, "computers");
@@ -183,15 +183,21 @@ let products = [
 
 // TODO: Write a function to find the most expensive product
 function findMostExpensiveProduct(products) {
-  // your code here
+  let maxIndex = 0;
+  for(let i = 0; i < products.length; i++){
+    if(products[i].price > products[maxIndex].price){
+        maxIndex = i;
+    }
+  }
+  return products[maxIndex];
 }
 
-// let expensiveProduct = findMostExpensiveProduct(products);
-// console.log("Most Expensive Product:", expensiveProduct);
+let expensiveProduct = findMostExpensiveProduct(products);
+console.log("Most Expensive Product:", expensiveProduct);
 
 // TODO: Write a function to return an array of only available product sizes
 function getAvailableSizes(products) {
-  // your code here
+  
 }
 
 // let sizes = getAvailableSizes(products);
@@ -206,11 +212,11 @@ let student = {
 
 // TODO: Write a function to add a new property to the student object
 function addProperty(student, key, value) {
-  // your code here
+  student[key] = value;
 }
 
-// addProperty(student, "grade", "A");
-// console.log("Updated Student:", student);
+addProperty(student, "grade", "A");
+console.log("Updated Student:", student);
 
 /////////////////////////////////////////////////////
 
@@ -228,11 +234,19 @@ let school = {
 
 // TODO: Write a function to update a student's grade in a subject
 function updateStudentGrade(school, studentId, subject, newGrade) {
-  // your code here
+  if(studentId === school[0].id){
+    return (school.students[0].grades[subject] = newGrade);
+  }
+  else if(studentId === school[0].id){
+    return (school.students[1].grades[subject] = newGrade);
+  }
+  else{
+    return (school.students[2].grades[subject] = newGrade);
+  }
 }
 
-// updateStudentGrade(school, 1, "math", 90);
-// console.log("Updated School:", school);
+updateStudentGrade(school, 1, "math", 90);
+console.log("Updated School:", school);
 
 /////////////////////////////////////////////////////
 
@@ -246,28 +260,34 @@ let orders = [
 
 // TODO: Write a function to return an array of only delivered orders
 function getDeliveredOrders(orders) {
-  // your code here
+  let group = {};
+  for(let i =0; i < orders.length; i++){
+    if(orders[i].status === "delivered"){
+        if(group[orders[i].status] === undefined){
+            group[orders[i].status].push(orders[i]);
+        }
+    }
+  }
+  return group
 }
 
-// let deliveredOrders = getDeliveredOrders(orders);
-// console.log("Delivered Orders:", deliveredOrders);
+let deliveredOrders = getDeliveredOrders(orders);
+console.log("Delivered Orders:", deliveredOrders);
 
 // TODO: Write a function to count the occurrences of each product in the orders
 function countProductOccurrences(orders) {
   let products = {};
   for(let i = 0; i < orders.length; i++){
-    let order = orders[i]
-    let currentProduct = order.product
-    // if(!products[currentProduct]){
-    //     products.orders[i].product;
-    // }
-    products.orders[i].product ++;
+    if(products[orders[i].product] === undefined){
+        products[orders[i].product] = 0;
+    }
+    products[orders[i].product] ++;
   }
   return products;
 }
 
-// let productCounts = countProductOccurrences(orders);
-// console.log("Product Counts:", productCounts);
+let productCounts = countProductOccurrences(orders);
+console.log("Product Counts:", productCounts);
 /*
   Output:
   {
