@@ -38,10 +38,12 @@ app.get("/api/product", (req, res) => {
 
 app.get("/api/product/:productID", (req, res) => {
     const productId = req.params.productID;
+    let product1 = null
     for(let i = 0; i < product.length; i++){
-        if(product[i].id === productId)  res.json(product[i])
-            else res.send ("product not found")
+        if(product[i].id === productId)  product1 = product[i]
     }
+    if (product1 === null) res.send("product not found")
+        else res.json(product1)
 });
 
 
