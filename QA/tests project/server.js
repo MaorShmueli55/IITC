@@ -95,8 +95,47 @@ app.get("/task1/:id", async (req, res) => {
     }
 });
 
+app.get("/carts/:id/update", async (req, res) => {
+    try {
+      const cartId = req.params.id;
+  
+      // קבלת המשתנים מה-URL (כמו /carts/7/update?userId=3&productId=1&quantity=4)
+      const userId = req.query.userId;
+      const productId = req.query.productId;
+      const quantity = req.query.quantity;
+  
+      console.log("Received update request for cart:", cartId);
+      console.log("Update data:", { userId, productId, quantity });
+  
+      // נתונים לעדכון בעגלה
+      const updatedCartData = {
+        userId: userId, // מזהה המשתמש
+        date: new Date().toISOString().split("T")[0], // תאריך עדכני
+        products: [{ productId: productId, quantity: quantity }],
+      };
+  
+      console.log("Updated cart data:", updatedCartData);
+  
+      // בקשת PUT לעדכון העגלה
+      const response = await axios.put(
+        `https://fakestoreapi.com/carts/${cartId}`,
+        updatedCartData
+      );
+  
+      console.log("Response from API:", response.data);
+  
+      // שליחת התוצאה כ-JSON בתגובה
+      res.json({
+        message: `Cart ${cartId} successfully updated`,
+        data: response.data,
+      });
+    } catch (err) {
+      console.error("API error", err);
+      res.status(500).send("Server Error");
+    }
+  });
 
-
+  //http://localhost:3007/carts/7/update?userId=3&productId=1&quantity=4
 
 // Start the server
 app.listen(port, () => {
