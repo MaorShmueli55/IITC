@@ -22,6 +22,43 @@ const dbConfig = {
         connectTimeout: 30000, // Increase connection timeout to 30 seconds
     },
   };
+  app.get('/addProduct/update', async (req, res) => {
+    try {
+        const title = req.query.title;
+        const price = req.query.price;
+        const description = req.query.description;
+        const image = req.query.image;
+        const category = req.query.category;
+
+        //http://localhost:3000/addProduct/update?title=nnn&price=1&description=jjj?image=mmmm?category=hhh
+
+        //Send Auth request using Axios
+        const response = await axios.post(`https://fakestoreapi.com/products`);
+        const newProduct = {
+            title : title,
+            price : price,
+            description : description,
+            image : image,
+            category : category
+        };
+        
+        res.json({
+            message: newProduct,
+            data: response.data
+        });
+        // let headers = {
+        //     "Content-Type": "application/json",
+        //     Accept: "application/json",
+        //   };
+
+
+        //Send the results as JSON
+        // res.json(result.recordset);
+    } catch (err) {
+        console.error('', err);
+        res.status(500).send('Server Error');
+    }
+});
 
 
 // Route to get data
