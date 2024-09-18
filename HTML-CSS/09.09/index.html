@@ -7,8 +7,8 @@
     <style>
         .main{
             background-color: yellow;
-            border: 2px solid blue;
-            margin-top: 16px;
+            border: 3px solid blue;
+            margin-bottom: 20px;
             padding: 10px;
         }
         p{
@@ -16,12 +16,14 @@
         }
         samp{
             color: black;
+            font-size: 18px;
         }
         .three_p{
             background-color: gray;
             color: aliceblue;
             border-radius: 8px;
             padding: 10px;
+            width: fit-content;
 
         }
         .circle{
@@ -49,30 +51,46 @@
         .text{
             color: aliceblue;
             background-color: black;
-            display: inline-block;
         }
         .left{
-
             padding: 10px;
+            width: fit-content;
         }
         .right{
             padding: 10px;
-            margin-left: 450px;
+            width: fit-content;
+            margin-left: auto;
         }
         .middle{
             padding: 10px;
+            width: 50px;
+            height: 25px;
+            margin: auto;
             border-radius: 50%;
             box-shadow: 5px 5px 10px white;
-            margin-left: 225px;
         }
         .button{
             margin-top: 30px;
         }
         button{
             color: aliceblue;
-            background-color: blueviolet;
+            background-color: hsl(271, 76%, 53%);
             margin-inline: auto;
             margin-block: auto;
+            border: none;
+        }
+        button:hover{
+            background-color: hsl(271, 76%, 80%);
+            border-radius: 2px;
+            color: black;
+            font-stretch:ultra-expanded;
+            cursor: pointer;
+            padding-inline: 18px;
+            padding-block: 8px;
+            
+        }
+        .EXPLORE:hover{
+            border-radius: 7px;
         }
         .EXPLORE{
             font-weight:500;
