@@ -15,14 +15,16 @@ function highlights(){
    }
 };
 button.addEventListener("click" , highlights);
-
+const listItem = document.querySelector(".listsItem");
 function createLi(){
 let newLi = document.createElement("li");
 newLi.textContent = "New Item";
-document.querySelector(".listsItem").appendChild(newLi)
-const items = document.querySelector(".listsItem").querySelectorAll("li");
+listItem.appendChild(newLi)
 newLi.addEventListener("click" , function(){
+    const items = listItem.querySelectorAll("li");
     for(let i = 0; i < items.length; i++){
+        console.log("click");
+        
         items[i].classList.remove("selected");
     }
     newLi.classList.add("selected")
