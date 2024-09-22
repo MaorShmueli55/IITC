@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Product Table</title>
+</head>
+<body>
+    <div class="container">
+        <h1>cart</h1>
+        <table id="product-table">
+            <thead>
+                <tr>
+                    <th>Product Name</th>
+                    <th>Product Price</th>
+                    <th></th>
+                    <th>Amount</th>
+                    <th></th>
+                    <th>Total</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody id="table-body">
+
+            </tbody>
+
+            <tfoot>
+                <tr>
+                    <td>Total Price</td>
+                    <td id="total-price">0</td>
+                </tr>
+            </tfoot>
+        </table>
+        <div class="Available-Products">
+            <h2>Available Products</h2>
+            <div id="product-list"></div>
+        </div>
+    </div>
+    <script src="main.js"></script>
+</body>
+</html>
