@@ -1,0 +1,46 @@
+body{
+    background-color: #e7dfcf ;
+}
+
+table{
+
+}
+
+thead{
+    color: hsl(145, 21%, 40%);
+    font-size: 1.2rem;
+}
+
+thead th{
+    padding-left: 0.7rem;
+}
+
+tr{
+    padding: 2rem
+}
+
+tbody{
+    text-align: center;
+}
+
+label{
+    color: hsl(145, 21%, 40%);
+    font-size: 1.2rem;
+}
+
+button{
+    background-color: hsl(39, 20%, 70%);
+    border: none;
+    padding: 0.3rem;
+    border-radius: 1rem;
+    margin-left: 0.6rem;
+}
+
+button i{
+    color: rgb(121, 22, 22)
+}
+form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

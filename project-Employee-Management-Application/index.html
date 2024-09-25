@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Employee Management Application</h1>
+        <table id="employees-table">
+            <thead>
+                <tr>
+                    <th>First name</th>
+                    <th>Last name</th>
+                    <th>age</th>
+                    <th>Start date</th>
+                    <th>Department</th>
+                    <th>Salary</th>
+                </tr>
+            </thead>
+            <tbody id="table-body">
+
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td> employees:</td>
+                    <td id="amount">0</td>
+                </tr>
+            </tfoot>
+        </table>
+        <hr>
+        <form id="employee-form">
+            <h3>Add new employee</h3>
+            <label for="fName-input">First name:</label>
+            <input
+            id="fName-input"
+            type="text"
+            placeholder="Enter First name"
+            required
+          />
+           <label for="lName-input">Last name:</label>
+            <input
+            id="lName-input"
+            type="text"
+            placeholder="Enter Last name"
+            required
+          />
+          <label for="age-input">Age:</label>
+            <input
+            id="age-input"
+            type="number"
+            placeholder="Enter Age"
+            required
+          />
+            <label for="department-inpUt">Department:</label>
+            <input
+            id="department-inpUt"
+            type="text"
+            placeholder="Enter Department"
+            required
+          />
+           <label for="salary-input">Salary:</label>
+            <input
+            id="salary-input"
+            type="number"
+            placeholder="Enter Salary"
+            required
+          />
+           <label for="date-input">Start date:</label>
+            <input
+            id="date-input"
+            type="date"
+            placeholder="Enter start date"
+            required
+          />
+          <button>Add Employee</button>
+        </form>
+        <aside>
+
+        </aside>
+    </div>
+    <script type="module" src="controller.js"></script>
+</body>
+</html>
