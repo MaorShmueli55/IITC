@@ -44,3 +44,8 @@ form{
     flex-direction: column;
     align-items: center;
 }
+
+aside{
+    display: flex;
+    flex-direction: column;
+}

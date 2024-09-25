@@ -64,6 +64,19 @@ let gImployees= [
         id: utils.makeId(),
     }
   ]
+
+  let employees = [];
+  function getFromStorage() {
+      const employee_STORAGE_KEY = localStorage.getItem("employees");
+      if(employee_STORAGE_KEY){
+        employees = JSON.parse(employee_STORAGE_KEY);
+        renderEmployeesTable();
+      }
+  }
+  
+  function saveToStorage() {
+    localStorage.setItem("employees", JSON.stringify(employees));
+  }
   
   const elEmployeeForm = document.getElementById("employee-form")
   elEmployeeForm.addEventListener("submit", function (ev) {
@@ -78,6 +91,7 @@ let gImployees= [
     const dateInput = document.getElementById("date-input");
   
     
+
     if (!fNameInput.value && !lNameInput.value && !ageInput.value && !departmentInput.value && !salaryInput.value && !dateInput.value) return;
     addEmployee(fNameInput.value ,lNameInput.value , ageInput.value , departmentInput.value , salaryInput.value , dateInput.value);
   
@@ -91,10 +105,12 @@ let gImployees= [
     dateInput.value = "";
   });
   
+
+
   function renderEmployeesTable(){
     const tableBody = document.getElementById("table-body")
     const amount = document.getElementById("amount")
-    const addBtn = document.getElementById
+
 
     tableBody.innerHTML = "";
 
@@ -104,15 +120,68 @@ let gImployees= [
         for(let j = 0; j <  Object.values(gImployees[i]).length -1; j++){
             newRow.insertCell(j).innerHTML = Object.values(gImployees[i])[j];
         }
-        const deleteBtn = document.createElement("button");
-        const editBtn = document.createElement("button");
-        deleteBtn.innerHTML = '<i class="fas fa-trash-alt"></i>';
-        editBtn.textContent = "Edit";
 
+        const deleteBtn = document.createElement("button");
+        deleteBtn.innerHTML = '<i class="fas fa-trash-alt"></i>';
+        
+        
         deleteBtn.addEventListener("click", function () {
             deleteEmployee(gImployees[i].id);
-            renderEmployeesTable(); // this is not recursive
+            saveToStorage();
+            renderEmployeesTable(); 
           });
+
+        const editBtn = document.createElement("button");
+        editBtn.textContent = "Edit";
+        editBtn.setAttribute("class" , "editBtn");
+
+        editBtn.addEventListener("click", function (event) {
+            event.stopPropagation(); // מונע את לחיצת השורה מלהגיב
+
+            newRow.querySelectorAll('td').forEach((cell, index) => {
+                if (index < newRow.cells.length ) { // דילוג על תא הפעולות
+                    const currentCellText = cell.innerText;
+                    const existingInput = cell.querySelector("input");
+                    if (!existingInput) {
+                        const input = document.createElement("input");
+                        input.type = "text";
+                        input.value = currentCellText;
+                        cell.innerHTML = ""; // מנקה את התוכן הקודם של התא
+                        cell.appendChild(input);
+                    } else {
+                        // אם יש כבר אינפוט, מחליף את הערך
+                        const newValue = existingInput.value;
+                        cell.innerHTML = newValue;
+                    }
+                }
+            });
+        });
+
+        const tableRows = document.querySelectorAll("#table-body tr");
+
+        tableRows.forEach((currentRow) => {
+              
+            currentRow.addEventListener("click" , function (){
+                currentRow.querySelectorAll('td').forEach( (cell , index) => {
+                    
+                    if(index < currentRow.children.length -1){ 
+                        
+                        const currentCellText = cell.innerText;
+                        const existingInput = cell.querySelector("input");
+                        if (!existingInput) {
+                            const input = document.createElement("input");
+                            input.type = "text";
+                            input.value = currentCellText;
+                            cell.innerHTML = "";
+                            cell.appendChild(input);
+                        }
+                    } 
+                  });
+              })
+              
+              });
+
+        
 
         newRow.appendChild(deleteBtn);
         newRow.appendChild(editBtn);
@@ -120,6 +189,7 @@ let gImployees= [
     amount.textContent = gImployees.length;
 
   }
+  getFromStorage();
 
 function addEmployee(fName, lName , age, department, salary , date){
     const employee ={
@@ -133,6 +203,7 @@ function addEmployee(fName, lName , age, department, salary , date){
     }
 
     gImployees.push(employee);
+    saveToStorage();
 }
 
   function deleteEmployee(id){
@@ -140,4 +211,18 @@ function addEmployee(fName, lName , age, department, salary , date){
   }
 
 
-  renderEmployeesTable();
+
+ 
+        const minFilterInput = document.getElementById("min-salary-filter")
+        const minFilterValue = document.getElementById("minSalaryValue")
+        const maxFilterInput = document.getElementById("max-salary-filter")
+        const maxFilterValue = document.getElementById("maxSalaryValue")
+
+        minFilterInput.addEventListener("input" , function(){
+            minFilterValue.textContent = minFilterInput.value + "$";
+        })
+        maxFilterInput.addEventListener("input" , function(){
+            maxFilterValue.textContent = maxFilterInput.value + "$";
+        })
+        
+        renderEmployeesTable();
