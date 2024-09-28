@@ -10,7 +10,7 @@
 <body>
   <div class="main">
     <aside>
-      <div>
+      <h3>Filter</h3>
         <label for="fName-filter">First name:</label>
         <input
         id="fName-filter"
@@ -18,8 +18,6 @@
         placeholder="Enter First name"
         required
         />
-      </div>
-      <div>
         <label for="lName-filter">Last name:</label>
         <input
         id="lName-filter"
@@ -27,13 +25,9 @@
         placeholder="Enter Last name"
         required
         />
-      </div>
-      <div>
         <label for="age-filter">Age</label>
         <input type="range" id="age-filter" min="16" max="70" value="0" step="1">
-        <span id="age-value"></span>
-    </div>
-    <div>
+        <span id="age-value"></span>    
         <label for="department-filter">Department:</label>
           <select id="department-filter" name="department">
             <option value=""></option>
@@ -44,19 +38,15 @@
             <option value="HR">HR</option>
             <option value="Operations">Operations</option>
             <option value="Logistics">Logistics</option>
-          </select>
-      </div>
-      <div>
-      <label for="min-salary-filter">Min salary:</label>
+          </select>    
+        <label for="min-salary-filter">Min salary:</label>
           <input type="range" id="min-salary-filter" name="rangeInput" min="0" max="100000" value="0" step="1000">
           <span id="minSalaryValue"></span>
-      </div>
-      <div>
         <label for="max-salary-filter">Max salary:</label>
           <input type="range" id="max-salary-filter" name="rangeInput" min="0" max="99000" value="99000" step="1000">
           <span id="maxSalaryValue"></span>
-      </div>
-      <button class="Filter">Filter</button>
+      <button class="Filter"><i class="fas fa-search"></i></button>
+      <button class="getAll">All</button>
     </aside>
     <div class="container">
       <h1>Employee Management Application</h1>
@@ -103,6 +93,8 @@
         id="age-input"
         type="number"
         placeholder="Enter Age"
+        min="16"
+        max="70"
         required
       />
       <label for="department-input">Department:</label>
@@ -121,6 +113,8 @@
         id="salary-input"
         type="number"
         placeholder="Enter Salary"
+        min="0"
+        max="100000"
         required
       />
         <label for="date-input">Start date:</label>

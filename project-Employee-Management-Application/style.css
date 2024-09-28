@@ -1,47 +1,85 @@
+:root{
+    --background-body-color: hsl(40, 33%, 86%);
+    --background-aside-color: hsl(39, 20%, 70%);
+    --title-color: hsl(145, 21%, 40%);
+    --text-color: hsl(221, 11%, 34%);
+    --inside-button-color: hsl(0, 69%, 28%);
+}
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html , body{
+    height: 100vw;
+}
+
 body{
-    background-color: #e7dfcf ;
+    background-color: var(--background-body-color) ;
 }
 
 .main{
     display: flex;
     width: 100vw;
+    height: 100vw;
     justify-content: center;
     align-content: space-between;
+    gap: 4rem;
+    flex: 1;
 }
 
 aside{
     display: flex;
     flex-direction: column;
-    background-color: hsl(39, 20%, 70%);
+    align-items: center;
+    background-color: var(--background-aside-color);
     padding: 1rem;
-    max-width: 13rem;
-    /* height: 100vh;     */
+}
+
+aside input{
+    margin-bottom: 0.8rem;
+    width: 11rem;
 }
 
 form{
     display: flex;
     flex-direction: column;
-    background-color:hsl(39, 20%, 70%); 
+    background-color:var(--background-aside-color); 
     align-items: center;
-    /* height: 100vh; */
-    width: 12rem;
-    padding-top: 20px;
+    padding: 1rem;
 }
 
+form input{
+    margin-bottom: 0.8rem;
+    width: 11rem;
+}
+
+#department-input {
+    background-color: var(--background-body-color);
+    margin-bottom: 0.5rem;
+    width: 11rem;
+}
+
+#department-filter{
+    background-color: var(--background-body-color);
+    width: 11rem;
+}
 
 h1{
-    /* margin-left: 20rem; */
     text-align: center;
+    padding-block: 1.5rem;
 }
+
 table{
 padding: 3rem;
 font-size: 1.2rem;
 border-collapse: collapse;
-width: 30rem;
 }
 
 thead{
-    color: hsl(145, 21%, 40%);
+    color: var(--title-color);
     font-size: 1.2rem;
 }
 
@@ -49,8 +87,13 @@ thead th{
     padding-left: 1.5rem;
 }
 
+tbody{
+    text-align: center;
+    color:var(--text-color);
+}
+
 tbody tr {
-    border-bottom: 0.3rem solid hsl(39, 20%, 70%); /* קו בין השורות */
+    border-bottom: 0.3rem solid var(--background-aside-color); /* קו בין השורות */
     margin-bottom: 3rem;
     padding: 3rem;
 }
@@ -60,94 +103,128 @@ td{
     padding: 0;
 }
 
-tbody{
-    text-align: center;
-    color:#4c525f;
-}
-
 tfoot{
-    color:hsl(145, 21%, 40%);
+    color:var(--title-color);
     font-weight: 600;
     padding: 3rem;
 }
+
 #amount{
-    color:#4c525f;
+    color:var(--text-color);
     font-weight: normal;
 }
 
+table input{
+    max-width: 8rem;
+    width: 4.5rem;
+}
+
 label{
-    color: #4c525f;
-    /* color: hsl(145, 21%, 40%); */
+    color: var(--text-color);
     font-size: 1.2rem;
 }
 
-button{
-    background-color: hsl(39, 20%, 70%);
+input{
+    background:var(--background-body-color) ; 
+    width: 4.2rem;    
+    border: 0.08rem solid ;
+}
+
+input[type="range"] {
+    -webkit-appearance: none;
+    width: 11rem;
+    height: 0.6rem;
+    background: var(--background-body-color);
+    outline: none;
+    opacity: 0.7;
     border: none;
-    padding: 0.3rem;
-    border-radius: 1rem;
-    margin-left: 0.6rem;
-    margin-block: 0.4rem;
-}
-
-button i{
-    color: rgb(121, 22, 22)
-}
-
-aside div{
-    margin-bottom: 1rem;
+    
 }
 
 input[type="range"]::-webkit-slider-thumb{
     appearance: none;
     width: 20px;
     height: 20px;
-    background: rgb(121, 22, 22); /* צבע הידית */
+    background: var(--inside-button-color); 
     cursor: pointer;
     border-radius: 50%; 
     border: 2px solid #fff;
     
 }
 
-input[type="range"] {
-    -webkit-appearance: none;
-    width: 100%;
-    height: 0.6rem;
-    background: #e7dfcf ; /* צבע הרקע של הסרגל */
-    outline: none;
-    opacity: 0.7;
-    
+button{
+    color: var(--inside-button-color);
+    background-color: var(--background-aside-color);
+    border: none;
+    padding: 0.4rem;
+    border-radius: 1rem;
+    margin-left: 0.6rem;
+    margin-block: 0.4rem;
+    cursor: pointer;
+    transition: 0.15s;
 }
 
-input{
-    background:#e7dfcf ; 
-    
+button:hover{
+    border: 0.1rem solid var(--inside-button-color);
 }
 
-form input{
-    margin-bottom: 0.5rem;
-    width: 8rem;
+button i{
+    color: var(--inside-button-color)
 }
-.Filter{
-    background-color: #e7dfcf;
+
+.Filter , .getAll{
+    background-color: var(--background-body-color);
+    width: 10rem;
 }
 
 form button{
-    background-color: #e7dfcf ;
+    background-color: var(--background-body-color) ;
+    width: 10rem;
 }
 
-#department-input {
-    background-color: #e7dfcf;
-    margin-bottom: 0.5rem;
-    width: 8rem;
+h3{
+    padding-block: 0.6rem;
+    color: var(--title-color);
 }
 
-#department-filter{
-    background-color: #e7dfcf;
-    width: 10.626rem;
+@media (max-width: 1024px) {
+    html , body{
+        height: 100vw;
+        width: 100vw;
+    }
 
+    .main{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        align-items: center;
+        max-width: 100vw;
+        padding: 2rem;
+    }
+    aside{
+      grid-row: 2/3;
+      grid-column: 1/2;
+    }
+
+    .container{
+        grid-column: 1/3;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    table{
+        align-items: center;
+        justify-content: center;
+    }
+
+    #amount{
+        padding-left: 2rem;
+    }
+    
 }
 
-table input{
-    max-width: 5rem;
-}
+
+
+
