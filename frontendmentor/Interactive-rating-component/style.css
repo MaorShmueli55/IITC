@@ -1,0 +1,145 @@
+@font-face {
+    font-family: "Overpass";
+    src: url(./fonts/static/Overpass-Regular.ttf);
+}
+
+:root{
+ --Orange: hsl(25, 97%, 53%);
+ --White-title: hsl(0, 0%, 100%);
+ --Light-Grey-p: hsl(217, 12%, 63%);
+ --Dark-Blue-card: hsl(213, 19%, 18%);
+ --Dark-Blue-num: hsl(213, 19%, 25%);
+ --Very-Dark-Blue-Background: hsl(216, 12%, 8%);
+}
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html , body{
+    height: 100vw;
+}
+
+img{
+    display: block;
+}
+
+.star{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--Dark-Blue-num);
+    height: 2rem;
+    width: 2rem;
+    border-radius: 50%;
+}
+
+body{
+    font-family: "Overpass";
+    background-color: var(--Very-Dark-Blue-Background);
+    color: var(--Light-Grey-p);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.title{
+    color: var(--White-title);
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+p{
+    font-size: 15px;
+}
+
+button{
+    background-color: var(--Orange);
+    letter-spacing: 0.2rem;
+    width: 100%;
+    font-weight: 600;
+    border-radius: 1rem;
+    padding: 0.7rem;
+    border: none;
+}
+
+button:hover{
+    background-color: var(--White-title);
+    cursor:pointer;
+}
+
+.raiting-num{
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 0.3rem;
+}
+
+.container {
+    max-width: 310px;
+    margin-bottom: 1rem;
+    border-radius: 1rem;
+    padding: 1.5rem;
+    background-color: var(--Dark-Blue-card);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.raiting-num div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--Dark-Blue-num);
+    height: 1.5rem;
+    width: 1.5rem;
+    border-radius: 50%;
+    text-align: center;
+    padding: 1rem;
+    margin-block: 0.5rem;
+}
+
+.raiting-num div:hover{
+    background-color: var(--Orange);
+    cursor:pointer;
+    color:black;
+}
+
+.selected-rating{
+    background-color: var(--White-title);
+    color: black;
+}
+
+
+.thankYou{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1.5rem;
+}
+
+.result{
+    background-color: var(--Dark-Blue-num);
+    color: var(--Orange);
+    padding: 0.5rem;
+    border-radius: 1rem;
+    padding-inline: 1rem;
+}
+
+.selected-num.num{
+    background-color: var(--White-title);
+    color: black;
+}
+
+.hidden{
+    display: none;
+}
+
+@media (min-width : 800px) {
+    .container{
+        max-width: 400px;
+    }
+}
