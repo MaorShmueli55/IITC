@@ -93,7 +93,7 @@ tbody{
 }
 
 tbody tr {
-    border-bottom: 0.3rem solid var(--background-aside-color); /* קו בין השורות */
+    border-bottom: 0.3rem solid var(--background-aside-color); 
     margin-bottom: 3rem;
     padding: 3rem;
 }

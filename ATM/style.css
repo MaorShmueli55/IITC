@@ -1,0 +1,114 @@
+:root{
+    --background-color: hsl(0, 0%, 80%) ;
+    --listBtn-color:#00796b;
+    --submitBtn-color:hsl(175, 41%, 67%);
+    --h1-color:#212121;
+    --card-color:#BDBDBD
+};
+
+body {
+    background-color: var(--background-color);
+    display: flex;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+h1 {
+    color: var(--h1-color);
+    margin-bottom: 1.7rem;
+}
+
+form {
+    background-color: var(--card-color);
+    width: 50vw;
+    padding: 1.5rem;
+    border-radius: 1rem;
+}
+
+label {
+    display: block;
+    margin-bottom: 1rem;
+    font-weight: bold;
+}
+
+input {
+    width: 50%;
+    padding: 0.5rem;
+    margin-right: 2rem;
+    margin-bottom: 1.3rem;
+    border: none;
+    border-radius: 0.4rem;
+}
+
+button {
+    background-color: var(--submitBtn-color);
+    color: #fff;
+    padding: 1rem 1.5rem;
+    border: none;
+    border-radius: 0.4rem;
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: hsl(175, 41%, 40%)
+}
+
+nav {
+    margin-top: 2rem;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    gap: 3rem;
+}
+
+nav ul li button {
+    background-color: var(--listBtn-color);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 1rem;
+    font-weight: bold;
+}
+
+nav ul li button:hover {
+    background-color: hsl(173, 100%, 15%);
+}
+
+.container {
+    margin-top: 2rem;
+    width: 80%;
+    max-width: 600px;
+}
+
+.container div {
+    background-color: #ffffff;
+    padding: 1.3rem;
+    border-radius: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+h1 {
+    font-size: 1.5em;
+}
+
+input, p {
+    font-size: 1.2em;
+}
+
+.valid {
+    color: green;
+}
+
+.invalid {
+    color: red;
+}
+
+.hidden {
+    display: none;
+}
+
