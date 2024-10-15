@@ -17,143 +17,15 @@
             <button>Search</button>
         </div>
     </nav>
-    :root{
-        --nav-background-color:hsl(0, 0%, 15%);
-        --text-color:rgba(236, 218, 125, 0.874);
-    }
+    <section>
+        <h2>About the Website</h2>
+        <p>This movie website was built as part of a project to showcase popular and top-rated films. The site integrates with the TMDB API to fetch real-time data, providing users with access to a wide variety of movies. Visitors can explore movie details, see their ratings, and read a short description. The goal is to create an interactive and visually appealing platform for film enthusiasts to discover new content.</p>
+    </section>
     
-    *{
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-    }
-    
-    body{
-        background-color: black;
-        color: white;
-    }
-    
-    img{
-        display: block;
-    }
-    
-    nav{
-        background-color: var(--nav-background-color);
-        padding: 1rem;
-        display: flex;
-        align-items: center;
-        gap: 1rem;
-        color: white;
-        position: sticky;
-        top: 0;
-        margin-bottom: 1rem;
-        z-index: 999;
-    }
-    
-    .icone{
-        height: 100%;
-        width: 65px;
-    }
-    
-    .search{
-        margin-left: auto;
-    }
-    
-    a{
-        text-decoration: none;
-        color: white;
-    }
-    
-    .container{
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); 
-        justify-content: center;
-        align-content: space-around;
-        gap: 20px; 
-        justify-items: center; 
-        align-items: start;
-    }
-    
-    .movieCard{ 
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        border-radius: 1rem;
-        width: 100%; 
-        height: 100%;  
-        max-width: 200px;   
-        margin-bottom: 31rem;
-    }
-    
-    .movieCard img{
-        width: 100%; 
-        height: auto; 
-    }
-    
-    .movieInner {
-        position: relative;
-        width: 100%;
-        height: 100%;
-        transform-style: preserve-3d;  
-        transition: transform 1.5s ease; 
-    }
-    
-    .movieInner img {
-        transition: transform 0.8s ease;
-        backface-visibility: hidden;
-        transform-style: preserve-3d; 
-    }
-    
-    .movieInner:hover img {
-        transform: rotateY(180deg); /* התמונה תסתובב בלבד */
-    }
-    
-    .movieFront, .movieBack {
-        position: absolute;
-        width: 100%;
-        backface-visibility: hidden; 
-    }
-    
-    .movieFront {
-        z-index: 2;
-        transform: rotateY(0deg);
-    }
-    
-    .movieBack {
-        transform: rotateY(180deg);
-        background-color: var(--nav-background-color); 
-        color: white;
-        padding: 1rem;
-    }
-    
-    p{
-        font-size: 1.1rem;
-        height: 1.5rem;
-        margin-block: 1.2rem;
-        color: var(--text-color);
-        font-weight: 600;
-    }
-    
-    .movieAbout{
-        font-size: 1.1rem;
-        color: var(--text-color);
-    }
-    
-    .rate{
-        margin-block: 1rem;
-    }
-    
-    button{
-        padding: 0.5rem;
-        border-radius: 1rem;
-        background-color: var(--text-color);
-        border: none;
-    }
-    
-    span{
-        color: var(--text-color);
-        font-weight: 600;
-    }
+    <section>
+        <h2>About Me</h2>
+        <p>My name is Maor Shmueli, and I am a student currently working on my first project involving API integration. This project is a great opportunity for me to learn the ins and outs of web development, especially how to work with APIs to connect websites to real-time information. I am passionate about programming and excited to continue learning and improving my skills as I progress.</p>
+    </section>
     
     
 </body>
