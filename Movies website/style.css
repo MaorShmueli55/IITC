@@ -63,7 +63,6 @@ a{
     width: 100%; 
     height: 100%;  
     max-width: 200px;   
-    margin-bottom: 31rem;
 }
 
 .movieCard img{
@@ -77,6 +76,7 @@ a{
     height: 100%;
     transform-style: preserve-3d;  
     transition: transform 1.5s ease; 
+    margin-bottom: 20rem;
 }
 
 .movieCard:hover .movieInner {
@@ -99,12 +99,12 @@ a{
     background-color: var(--nav-background-color); 
     color: white;
     padding: 1rem;
+    overflow: auto;
 }
 
 p{
     font-size: 1.1rem;
     height: 1.5rem;
-    margin-block: 1.2rem;
     color: var(--text-color);
     font-weight: 600;
 }
@@ -123,6 +123,7 @@ p{
     border-radius: 1rem;
     background-color: var(--text-color);
     border: none;
+    margin-bottom: 5rem;
 }
 
 span{
@@ -134,3 +135,8 @@ span{
     background-color: var(--text-color);
     padding: 0.5rem;
 }
+
+.fav:hover{
+    cursor:grab;
+}
+

@@ -21,14 +21,14 @@ const saveTheData = async () => {
     <div class="movieInner">
         <div class="movieFront">
             <img class = "imgCard" src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="">
+            </div>
+            <div class="movieBack">
+              <div class="movieAbout">${movie.overview}</div>
+            </div>
+            </div>
             <p>${movie.title}</p>
             <div class="rate"> <span>Rating:</span> ${movie.vote_average}</div>
             <button class="fav">Favorites</button>
-        </div>
-        <div class="movieBack">
-            <div class="movieAbout">${movie.overview}</div>
-        </div>
-    </div>
 </div>
         `
     });
