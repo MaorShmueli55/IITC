@@ -1,6 +1,6 @@
 :root{
-    --nav-background-color:hsl(0, 0%, 15%);
-    --text-color:rgba(236, 218, 125, 0.874);
+    --nav-background-color:rgb(223, 197, 53);
+    --text-color:rgb(223, 197, 53);
 }
 
 *{
@@ -20,29 +20,51 @@ img{
 
 nav{
     background-color: var(--nav-background-color);
-    padding: 1rem;
+    padding: 0.7rem;
     display: flex;
     align-items: center;
-    gap: 1rem;
-    color: white;
+    gap: 1.3rem;
+    color: var(--nav-background-colors);
+    font-size: 1.4rem;
+    font-weight: 600;
     position: sticky;
     top: 0;
     margin-bottom: 1rem;
     z-index: 999;
 }
 
-.icone{
-    height: 100%;
-    width: 65px;
+nav div{
+    background-color: hsl(51, 73%, 37%);
+    color: black;
+    padding: 0.15rem;
+    border-radius: 2rem;
 }
 
 .search{
     margin-left: auto;
+    background-color: var(--nav-background-color);
 }
 
 a{
     text-decoration: none;
-    color: white;
+    color: black;
+    font-size: 1.4rem;
+    font-weight: 600;
+    background-color: hsl(51, 73%, 37%);
+    padding: 0.15rem;
+    border-radius: 2rem;
+}
+
+.icon{
+    height: 50px;
+    width: 50px;
+    background-color: var(--nav-background-color);
+}
+
+a .icon{
+    background-color: var(--nav-background-color);
+    padding: 0;
+    border-radius: 0;
 }
 
 .container{
@@ -130,14 +152,14 @@ span{
 
 .movieBack {
     transform: rotateY(180deg);
-    background-color: var(--nav-background-color); 
-    color: white;
+    background-color: white; 
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     padding: 1rem; 
     overflow: hidden; 
+    height: 300px;
 }
 
 .movieAbout {
@@ -171,4 +193,30 @@ section{
 
 section p{
     margin-bottom: 5rem;
+}
+
+.aboutImg{
+display: flex;
+height: 350px;
+justify-content: center;
+margin-bottom: 2rem;
+}
+
+.pages{
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    padding: 2rem;
+}
+
+.pages button{
+    padding: 1rem;
+    background-color: var(--nav-background-color);
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+}
+
+.hidden{
+    display: none;
 }

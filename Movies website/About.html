@@ -8,15 +8,22 @@
 </head>
 <body>
     <nav>
-        <a href="index.html"><img class="icone" src="./IMDB_Logo_2016.svg.png" alt=""></a>
+        <a href="index.html"><img class="icon" src="./maor.png" alt=""></a>
         <a href="About.html">About</a>
-        <div>Popular</div>
-        <div>Favorites</div>
+        <a href="index.html">
+            <div class="topRate">Top Rated</div>
+        </a>
+        <div class="favorite">Favorites</div>
         <div class="search">
-            <input type="text" placeholder="SEARCH">
-            <button>Search</button>
+            <input class="inputTitle" type="text" placeholder="Search By Name">
+            <button class="searchNameBtn">Search</button>
+            <input class="inputId" type="text" placeholder="Search By Id">
+            <button class="searchIdBtn">Search</button>
         </div>
     </nav>
+    <h1>
+        ABOUT
+    </h1>
     <section>
         <h2>About the Website</h2>
         <p>This movie website was built as part of a project to showcase popular and top-rated films. The site integrates with the TMDB API to fetch real-time data, providing users with access to a wide variety of movies. Visitors can explore movie details, see their ratings, and read a short description. The goal is to create an interactive and visually appealing platform for film enthusiasts to discover new content.</p>
@@ -26,6 +33,7 @@
         <h2>About Me</h2>
         <p>My name is Maor Shmueli, and I am a student currently working on my first project involving API integration. This project is a great opportunity for me to learn the ins and outs of web development, especially how to work with APIs to connect websites to real-time information. I am passionate about programming and excited to continue learning and improving my skills as I progress.</p>
     </section>
+    <div class="aboutImg"><img src="./maor.png" alt=""></div>
     
     
 </body>
