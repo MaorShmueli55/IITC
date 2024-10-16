@@ -91,7 +91,6 @@ const saveTheData = async () => {
   };
   
   saveTheData();
-
   function renderMovie(data) {
     containerEl.innerHTML = ``;
     data.forEach(movie => {
