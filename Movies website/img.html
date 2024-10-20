@@ -7,6 +7,7 @@
 </head>
 <body>
     <div class="movieInfo">
+<img src="" alt="">
     </div>
     <div class="order">
         <form>
@@ -32,10 +33,20 @@
                 <option value="22:00">22:00</option>
                 <option value="23:00">23:00</option>
                 <option value="00:00">24:00</option>
+            <label for="city">City:</label>
+            <select name="city" id="city">
+                <option value="Rishon LeZion">Rishon LeZion</option>
+                <option value="Tel Aviv">Tel Aviv</option>
+                <option value="Jerusalem">Jerusalem</option>
+                <option value="Haifa">Haifa</option>
+                <option value="Netanya">Netanya</option>
+ 
                 <button>Order</button>
             </select>
         </form>
     </div>
-    
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script type="module" src="main.js"></script>
 </body>
 </html>

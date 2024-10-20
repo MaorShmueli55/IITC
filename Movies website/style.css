@@ -130,9 +130,19 @@ p{
 .fav{
     padding: 0.5rem;
     border-radius: 1rem;
-    background-color: var(--text-color);
+    background-color: black;
     border: none;
     margin-bottom: 5rem;
+}
+
+.star-icon {
+    font-size: 50px;
+    color: transparent;
+    border: 2px solid gold;
+    border-radius: 50%;
+    padding: 10px;
+    cursor: pointer;
+    transition: color 0.3s, border 0.3s;
 }
 
 span{
@@ -220,3 +230,90 @@ margin-bottom: 2rem;
 .hidden{
     display: none;
 }
+
+.orderMovie{
+    padding: 2rem;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    height: 100%;
+    width: 100%;
+    gap: 5rem;
+}
+
+.movieDetails{
+    display: flex;
+    flex-direction: column;
+    gap: 1.4rem;
+}
+
+.OrderImg{
+   height: 34rem;
+}
+
+.OrderImg img{
+    height: 100%;
+}
+
+.OrderTitle{
+    font-size: 5rem;
+    color: var(--text-color);
+}
+
+.OrderInfo{
+    font-size: 1.4rem;
+}
+
+.OrderRating{
+    margin-bottom: 4rem;
+}
+
+.OrderRating span{
+    grid-row: span 2;
+    font-size: 1.4rem;
+    margin-right: 1rem;
+}
+
+
+h2{ 
+    margin-bottom: 1.5rem;
+    font-size: 2rem;
+    color: var(--text-color);
+}
+
+form{
+    /* display: flex; */
+    /* flex-direction: column;
+    gap: 1.2rem;
+    max-width: 20rem; */
+}
+
+#date{
+    margin-right: 1rem;
+}
+
+#city{
+    margin-right: 1rem;
+}
+
+label{
+    font-size: 1.5rem;
+    color: var(--text-color);
+}
+
+.orderBtn{
+   margin-left: 1rem;
+   padding: 0.4rem;
+   border-radius: 1rem;
+   background-color: var(--text-color);
+   border: none;
+   cursor: pointer;
+}
+
+.orderBtn:hover{
+    background-color: rgb(223, 197, 80); 
+    color: white; 
+    transform: scale(1.1); 
+    box-shadow: 0 8px 12px rgba(187, 177, 41, 0.4); 
+}
+
+

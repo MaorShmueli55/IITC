@@ -8,6 +8,8 @@ let mainPage = 1;
 let topPage = 1;
 let onFavorite = false;
 let onTopRated = false;
+let orderList = [];
+const orderEl = document.querySelector(".order");
 const containerEl = document.querySelector(".container");
 const topRateEl = document.querySelector(".topRate");
 const searchNameBtn = document.querySelector(".searchNameBtn");
@@ -19,7 +21,6 @@ const pageTwo = document.querySelector(".two");
 const pageTree = document.querySelector(".three");
 const titleEl = document.querySelector("h1");
 const buttonListEl = document.querySelector(".pages")
-const movieInfoEl = document.querySelector(".movieInfo")
 
 
 const homePage = ()=>{
@@ -70,7 +71,6 @@ const saveTheData = async () => {
     }
   };
 
-
   const addToFav = async (movieId)=>{
     let find = favArr.findIndex((movie)=>{
       return movie.id === movieId;
@@ -89,50 +89,127 @@ const saveTheData = async () => {
   const renderFav = ()=>{
     renderMovie(favArr);
   };
+
+  const orderMovie = async (movieId)=>{
+    const movie = await getMovieById(movieId)
+    const today = new Date().toISOString().split('T')[0];
+    const orderMovieEl = document.createElement("div");
+    orderMovieEl.classList.add("orderMovie")
+    containerEl.innerHTML = ``;
+    orderMovieEl.innerHTML = `
+    <div class = "OrderImg">
+       <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="">
+    </div>
+       <div class = "movieDetails">
+       <div class = "OrderTitle">${movie.title}</div>
+       <div class = "OrderInfo">${movie.overview}</div>
+       <div class = "OrderRating"><span>Rating:</span>${movie.vote_average}</div>
+           <div class="orderDetails">
+        <form>
+            <h2>Order a movie</h2>
+            <label for="city">City:</label>
+            <select name="city" id="city">
+                <option value=""></option>
+                <option value="Rishon LeZion">Rishon LeZion</option>
+                <option value="Tel Aviv">Tel Aviv</option>
+                <option value="Jerusalem">Jerusalem</option>
+                <option value="Haifa">Haifa</option>
+                <option value="Netanya">Netanya</option>
+            </select>
+            <label for="date">Date:</label>
+            <input type="date" id="date" min = ${today}        
+            placeholder="Enter a date"
+            required>
+            <label for="hour">Hour:</label>
+            <select name="hour" id="hour">
+                <option value="10:00">10:00</option>
+                <option value="11:00">11:00</option>
+                <option value="12:00">12:00</option>
+                <option value="13:00">13:00</option>
+                <option value="14:00">14:00</option>
+                <option value="15:00">15:00</option>
+                <option value="16:00">16:00</option>
+                <option value="17:00">17:00</option>
+                <option value="18:00">18:00</option>
+                <option value="19:00">19:00</option>
+                <option value="20:00">20:00</option>
+                <option value="21:00">21:00</option>
+                <option value="22:00">22:00</option>
+                <option value="23:00">23:00</option>
+                <option value="00:00">24:00</option>
+            </select>
+            <button class = "orderBtn" >Order</button>
+        </form>
+    </div>
+    </div>
+    `
+
+    const orderBtn = orderMovieEl.querySelector("form")
+    const city = orderMovieEl.querySelector("#city");
+    const date = orderMovieEl.querySelector("#date");
+    const hour = orderMovieEl.querySelector("#hour");
+    orderBtn.addEventListener("submit" , function(e){ 
+      e.preventDefault();
+      const order = {
+          name:movie.title,
+          city: city.value,
+          hour: hour.value,
+          date: date.value
+      };
+      orderList.push(order);
+      orderMovieEl.innerHTML = `Your order has been received in the system!`
+      setTimeout(function(){
+        saveTheData();
+        titleEl.textContent = "HOME PAGE";
+      }, 3000)
+      
+      console.log(orderList);
+      
+    })
+    orderEl.appendChild(orderMovieEl)
+  };
   
   saveTheData();
+
   function renderMovie(data) {
     containerEl.innerHTML = ``;
+    orderEl.innerHTML = ``;
     data.forEach(movie => {
-      const movieEl=document.createElement("div")
+      const movieEl = document.createElement("div")
       movieEl.classList.add("movieCard")
       movieEl.innerHTML += `
               <div class="movieInner">
                   <div class="movieFront">
-                      <a href="img.html"><img class = "imgCard" src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt=""></a>
+                      <img class = "imgCard" src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="">
                   </div>
                   <div class="movieBack">
-                      <a href="img.html"><div class="movieAbout">${movie.overview}</div></a>
+                      <div class="movieAbout">${movie.overview}</div>
                   </div>
               </div>
-                    <p>${movie.title}</p>
+                    <p>${movie.title}</p> 
                     <div class="rate"> <span>Rating:</span> ${movie.vote_average}</div>
-                    <button class="fav">Favorites</button>
+                    <button class="fav">⭐</button>
           `
          const favBtn = movieEl.querySelector(".fav");
          favBtn.addEventListener("click" , ()=>{
           addToFav(movie.id);
          })
 
-     
-         
-         movieEl.addEventListener("click" , ()=>{
-         const movieii=document.createElement("div")
-         movieii.innerHTML = `
-          <h1>${movie.title}</h1>
-          <img src="${movie.backdrop_path}" alt="">
-          <p>${movie.overview}</p>
-          <p>Rating: ${movie.vote_average}</p>
-          <p>release date: ${movie.releas_date}</p>
-            `   
+         const movieCardEl = movieEl.querySelector(".movieInner");
+         movieCardEl.addEventListener("click" , ()=>{
+          buttonListEl.classList.add("hidden");
+          titleEl.textContent = "";
+          orderMovie(movie.id);
          })
 
-         movieInfoEl.appendChild(movieii)
+
          containerEl.appendChild(movieEl)
         });
+
    console.log(data);
+   console.log(orderList);
+   
   };
-  
 
 
   topRateEl.addEventListener("click" , ()=>{
