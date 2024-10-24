@@ -165,6 +165,7 @@ const saveTheData = async () => {
       setTimeout(function(){
         saveTheData();
         buttonListEl.classList.remove("hidden");
+        searchEl.classList.remove("hidden");
         titleEl.textContent = "HOME PAGE";
       }, 3000)
       
@@ -230,6 +231,7 @@ function getOrders(){
          movieCardEl.addEventListener("click" , ()=>{
           buttonListEl.classList.add("hidden");
           titleEl.textContent = "";
+          searchEl.classList.add("hidden");
           orderMovie(movie.id);
          })
 
