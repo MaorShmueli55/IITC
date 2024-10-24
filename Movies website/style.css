@@ -246,13 +246,6 @@ section p{
     margin-bottom: 5rem;
 }
 
-.aboutImg{
-display: flex;
-height: 350px;
-justify-content: center;
-margin-bottom: 2rem;
-}
-
 .pages{
     display: flex;
     justify-content: center;
@@ -396,5 +389,29 @@ padding: 1rem;
     font-size: 1.2rem;
     margin-right: 0.7rem;
 }
+
+.about{
+display: flex;
+flex-direction: column;
+gap: 5rem;
+text-align: center;
+}
+
+.aboutImg{
+    display: flex;
+    height: 350px;
+    justify-content: center;
+    margin-block: 4rem;
+ }
+
+ .about h2{
+    color: white;
+    font-size: 3rem;
+ }
+
+ .about p{
+    line-height: 1.5rem;
+    font-size: 1.3rem;
+ }
 
 
