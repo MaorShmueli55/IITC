@@ -3,12 +3,12 @@ import {utils} from "./utils.js";
 
 const MOVIE_STORAGE_KEY = "movie"
 const favArr =  utils.getFromStorage(MOVIE_STORAGE_KEY) || [];
+const orderList = utils.getFromStorage(MOVIE_STORAGE_KEY) || [];
 
 let mainPage = 1;
 let topPage = 1;
 let onFavorite = false;
 let onTopRated = false;
-let orderList = [];
 const orderEl = document.querySelector(".order");
 const containerEl = document.querySelector(".container");
 const topRateEl = document.querySelector(".topRate");
@@ -16,11 +16,13 @@ const searchNameBtn = document.querySelector(".searchNameBtn");
 const searchIdBtn = document.querySelector(".searchIdBtn");
 const favoriteBtn = document.querySelector(".favorite");
 const iconBtn = document.querySelector(".icon");
-const pageOne = document.querySelector(".one");
-const pageTwo = document.querySelector(".two");
-const pageTree = document.querySelector(".three");
 const titleEl = document.querySelector("h1");
-const buttonListEl = document.querySelector(".pages")
+const buttonListEl = document.querySelector(".pages");
+const ordersBtn = document.querySelector(".orders");
+const showOrder = document.querySelector(".showOrder");
+const searchEl = document.querySelector(".search");
+const inputTitleValue = document.querySelector(".inputTitle");
+const inputIdValue = document.querySelector(".inputId");
 
 
 const homePage = ()=>{
@@ -58,6 +60,7 @@ const saveTheData = async () => {
     } catch(error){
       console.error(error.message);
     }
+    inputTitleValue.value = ``;
   };
 
   const getMovieById = async (id) =>{
@@ -69,6 +72,7 @@ const saveTheData = async () => {
     } catch(error){
       console.error(error.message);
     }
+    inputIdValue.value = ``;
   };
 
   const addToFav = async (movieId)=>{
@@ -143,7 +147,6 @@ const saveTheData = async () => {
     </div>
     </div>
     `
-
     const orderBtn = orderMovieEl.querySelector("form")
     const city = orderMovieEl.querySelector("#city");
     const date = orderMovieEl.querySelector("#date");
@@ -151,29 +154,53 @@ const saveTheData = async () => {
     orderBtn.addEventListener("submit" , function(e){ 
       e.preventDefault();
       const order = {
-          name:movie.title,
-          city: city.value,
-          hour: hour.value,
-          date: date.value
+        name:movie.title,
+        city: city.value,
+        hour: hour.value,
+        date: date.value
       };
       orderList.push(order);
+      utils.saveToStorage(MOVIE_STORAGE_KEY , orderList)
       orderMovieEl.innerHTML = `Your order has been received in the system!`
       setTimeout(function(){
         saveTheData();
+        buttonListEl.classList.remove("hidden");
         titleEl.textContent = "HOME PAGE";
       }, 3000)
       
-      console.log(orderList);
       
     })
     orderEl.appendChild(orderMovieEl)
   };
+
+function getOrders(){
+  containerEl.innerHTML = ``;
+  if(orderList.length === 0){
+    showOrder.innerHTML = `
+    <div>No existing orders</div>
+    `
+  }else{
+    orderList.forEach((order)=>{
+      const showOrderEl = document.createElement("div");
+      showOrderEl.classList.add("showOrders")
+      showOrderEl.innerHTML += `
+      <div class = "nameOrder">${order.name}</div>
+      <div><span>City:</span> ${order.city}</div>
+      <div><span>Date:</span> ${order.date}</div>
+      <div><span>Hour:</span> ${order.hour}</div>
+      `
+      showOrder.appendChild(showOrderEl);
+    })
+  }
+}
   
   saveTheData();
 
   function renderMovie(data) {
+
     containerEl.innerHTML = ``;
     orderEl.innerHTML = ``;
+    showOrder.innerHTML = ``;
     data.forEach(movie => {
       const movieEl = document.createElement("div")
       movieEl.classList.add("movieCard")
@@ -188,10 +215,14 @@ const saveTheData = async () => {
               </div>
                     <p>${movie.title}</p> 
                     <div class="rate"> <span>Rating:</span> ${movie.vote_average}</div>
-                    <button class="fav">⭐</button>
+                    <button class="fav"><span class = "add">Add to favorite</span><span class = "remove hidden">Remove from favorite</span></button>
           `
          const favBtn = movieEl.querySelector(".fav");
+         const add = movieEl.querySelector(".add");
+         const remove = movieEl.querySelector(".remove");
          favBtn.addEventListener("click" , ()=>{
+          add.classList.toggle("hidden")
+          remove.classList.toggle("hidden")
           addToFav(movie.id);
          })
 
@@ -211,11 +242,11 @@ const saveTheData = async () => {
    
   };
 
-
   topRateEl.addEventListener("click" , ()=>{
     onFavorite = false;
     onTopRated = true;
     buttonListEl.classList.remove("hidden");
+    searchEl.classList.add("hidden");
     titleEl.textContent = "TOP RARED";
     topRated();
   });
@@ -223,16 +254,14 @@ const saveTheData = async () => {
   searchNameBtn.addEventListener("click" , ()=>{
     onFavorite = false;
     buttonListEl.classList.add("hidden");
-    const inputTitleValue = document.querySelector(".inputTitle").value;
-    searchByName(inputTitleValue);
+    searchByName(inputTitleValue.value);
   });
 
   searchIdBtn.addEventListener("click" , async ()=>{
     onFavorite = false;
     buttonListEl.classList.add("hidden");
-    const inputIdValue = document.querySelector(".inputId").value;
     const data = []
-    data.push(await getMovieById(inputIdValue));
+    data.push(await getMovieById(inputIdValue.value));
     renderMovie(data);
   });
   
@@ -241,6 +270,7 @@ const saveTheData = async () => {
     onTopRated = false;
     titleEl.textContent = "FAVORITE";
     buttonListEl.classList.add("hidden");
+    searchEl.classList.add("hidden");
     renderFav();
   });
 
@@ -248,67 +278,37 @@ const saveTheData = async () => {
     onFavorite = false;
     onTopRated = false;
     buttonListEl.classList.remove("hidden");
+    searchEl.classList.remove("hidden");
     titleEl.textContent = "HOME PAGE";
     homePage();
   });
 
-  pageOne.addEventListener("click" , ()=>{
+  buttonListEl.addEventListener("click" , function(e){
+    if (e.target.tagName === 'BUTTON'){ 
     if(!onTopRated){
-    mainPage = 1;
-    saveTheData()
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth"
-    })
-  }else{
-    topPage = 1;
-    topRated()
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth"
-    })
+      mainPage = e.target.textContent;
+      saveTheData()
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      })
+    }else{
+      topPage = e.target.textContent;
+      topRated()
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      })
+    }
   }
-  }); 
+  })
 
-  pageTwo.addEventListener("click" , ()=>{
-    if(!onTopRated){
-      mainPage = 2;
-      saveTheData()
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-      })
-    }else{
-      topPage = 2;
-      topRated()
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-      })
-    }
-  }); 
-
-  pageTree.addEventListener("click" , ()=>{
-    if(!onTopRated){
-      mainPage = 3;
-      saveTheData()
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-      })
-    }else{
-      topPage = 3;
-      topRated()
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-      })
-    }
-  }); 
+  ordersBtn.addEventListener("click" , ()=>{
+    titleEl.textContent = "ORDERS";
+    buttonListEl.classList.add("hidden");
+    searchEl.classList.add("hidden");
+    getOrders();
+  })
 
 
-  
  
-  
-  
-  

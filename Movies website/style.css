@@ -23,9 +23,10 @@ nav{
     padding: 0.7rem;
     display: flex;
     align-items: center;
-    gap: 1.3rem;
+    align-content: space-between;
+    justify-content: space-between;
     color: var(--nav-background-colors);
-    font-size: 1.4rem;
+    font-size: 1.5rem;
     font-weight: 600;
     position: sticky;
     top: 0;
@@ -34,37 +35,72 @@ nav{
 }
 
 nav div{
-    background-color: hsl(51, 73%, 37%);
     color: black;
     padding: 0.15rem;
-    border-radius: 2rem;
+    cursor: pointer;
+}
+
+nav div:hover{
+    cursor:pointer;
+    color: white;
+    transform: scale(1.1); 
 }
 
 .search{
-    margin-left: auto;
-    background-color: var(--nav-background-color);
+ display: flex;
+ flex-direction: column;
+ max-width: 35rem; 
+ padding: 3rem;
+ gap: 1.5rem;
+}
+
+.searchInput{
+    color: var(--text-color);
+    background-color: black;
+    border: 0.1rem solid var(--text-color);
+    border-radius: 1rem;
+    padding: 0.2rem;
+}
+
+.searchBtn{
+    background-color: var(--text-color);
+    padding: 0.3rem;
+    border-radius: 1rem;
+    border: none;
+}
+
+.searchBtn:hover{
+    cursor:pointer;
+    background-color: rgb(223, 197, 80); 
+    color: white;
+    transform: scale(1.1); 
+    box-shadow: 0 8px 12px rgba(187, 177, 41, 0.4); 
 }
 
 a{
     text-decoration: none;
     color: black;
-    font-size: 1.4rem;
-    font-weight: 600;
-    background-color: hsl(51, 73%, 37%);
     padding: 0.15rem;
-    border-radius: 2rem;
+    cursor: pointer;
+}
+
+a:hover{
+    cursor:pointer;
+    color: white;
+    transform: scale(1.1); 
 }
 
 .icon{
     height: 50px;
-    width: 50px;
+    width: 70px;
+    border-radius: 20%;
     background-color: var(--nav-background-color);
 }
 
-a .icon{
-    background-color: var(--nav-background-color);
-    padding: 0;
-    border-radius: 0;
+.icon:hover{
+    cursor:pointer;
+    color: white;
+    transform: scale(1.1); 
 }
 
 .container{
@@ -130,9 +166,17 @@ p{
 .fav{
     padding: 0.5rem;
     border-radius: 1rem;
-    background-color: black;
+    background-color: var(--text-color);
     border: none;
     margin-bottom: 5rem;
+}
+
+.fav span{
+    color: black;
+}
+
+.fav span:hover{
+    color: white;
 }
 
 .star-icon {
@@ -150,14 +194,11 @@ span{
     font-weight: 600;
 }
 
-.searchBtn{
-    background-color: var(--text-color);
-    padding: 0.5rem;
-    border-radius: 1rem;
-}
-
 .fav:hover{
-    cursor:grab;
+    cursor:pointer;
+    background-color: rgb(223, 197, 80); 
+    transform: scale(1.1); 
+    box-shadow: 0 8px 12px rgba(187, 177, 41, 0.4); 
 }
 
 .movieBack {
@@ -215,16 +256,39 @@ margin-bottom: 2rem;
 .pages{
     display: flex;
     justify-content: center;
+    align-items: center;
+    align-content: center;
     gap: 1rem;
     padding: 2rem;
 }
 
 .pages button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1rem;
     padding: 1rem;
     background-color: var(--nav-background-color);
     width: 2rem;
     height: 2rem;
     border-radius: 50%;
+    border: none;
+}
+
+.pages button:hover{
+    cursor:pointer;
+    background-color: rgb(223, 197, 80); 
+    color: white;
+    transform: scale(1.1); 
+    box-shadow: 0 8px 12px rgba(187, 177, 41, 0.4); 
+}
+
+.selected{
+    cursor:pointer;
+    background-color: rgb(223, 197, 80); 
+    color: white;
+    transform: scale(1.1); 
+    box-shadow: 0 8px 12px rgba(187, 177, 41, 0.4);
 }
 
 .hidden{
@@ -280,13 +344,6 @@ h2{
     color: var(--text-color);
 }
 
-form{
-    /* display: flex; */
-    /* flex-direction: column;
-    gap: 1.2rem;
-    max-width: 20rem; */
-}
-
 #date{
     margin-right: 1rem;
 }
@@ -314,6 +371,30 @@ label{
     color: white; 
     transform: scale(1.1); 
     box-shadow: 0 8px 12px rgba(187, 177, 41, 0.4); 
+}
+
+h1{
+    color: var(--text-color);
+    text-align: center;
+    padding: 1rem;
+}
+
+.nameOrder{
+font-size: 1.5rem; 
+margin-bottom: 1rem;
+color: var(--text-color);
+}
+
+.showOrders{
+display: grid;
+grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); 
+margin-bottom: 0.5rem;
+padding: 1rem;
+}
+
+.showOrders span{
+    font-size: 1.2rem;
+    margin-right: 0.7rem;
 }
 
 
