@@ -38,9 +38,9 @@ const saveTheData = async () => {
     } catch (error) {
       console.error(error.message);
     }
-  };
+};
 
-  const topRated = async () =>{
+const topRated = async () =>{
     try{
       const response = await axios.get(
        `https://api.themoviedb.org/3/movie/top_rated?api_key=${API_KEY}&language=en-US&page=${topPage}`
@@ -49,9 +49,9 @@ const saveTheData = async () => {
     } catch(error){
       console.error(error.message);
     }
-  };
+};
 
-  const searchByName = async (title) =>{
+const searchByName = async (title) =>{
     try{
       const response = await axios.get(
        `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${title}`
@@ -63,12 +63,11 @@ const saveTheData = async () => {
       }
     } catch(error){
       console.log(error);
-      
     }
     inputTitleValue.value = ``;
-  };
+};
 
-  const getMovieById = async (id) =>{
+const getMovieById = async (id) =>{
     try{
       const response = await axios.get(
        `https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}`
@@ -76,12 +75,11 @@ const saveTheData = async () => {
       return response.data;
     } catch(error){
       console.log(error);
-      
     }
     inputIdValue.value = ``;
-  };
+};
 
-  const addToFav = async (movieId, add , remove)=>{
+const addToFav = async (movieId, add , remove)=>{
     add.classList.toggle("hidden")
     remove.classList.toggle("hidden")
     let find = favArr.findIndex((movie)=>{
@@ -96,13 +94,13 @@ const saveTheData = async () => {
       }
     }
     utils.saveToStorage(MOVIE_STORAGE_KEY , favArr)
-  }
+}
   
-  const renderFav = ()=>{
+const renderFav = ()=>{
     renderMovie(favArr);
-  };
+};
 
-  const orderMovie = async (movieId)=>{
+const orderMovie = async (movieId)=>{
     const movie = await getMovieById(movieId)
     const today = new Date().toISOString().split('T')[0];
     const orderMovieEl = document.createElement("div");
@@ -180,7 +178,7 @@ const saveTheData = async () => {
       
     })
     orderEl.appendChild(orderMovieEl)
-  };
+};
 
 function getOrders(){
   containerEl.innerHTML = ``;
@@ -209,10 +207,8 @@ function updateFavBtn(add, remove, movie) {
         remove.classList.remove("hidden")
     }
 }
-  
-  saveTheData();
 
-  function renderMovie(data) {
+function renderMovie(data) {
     containerEl.innerHTML = ``;
     orderEl.innerHTML = ``;
     showOrder.innerHTML = ``;
@@ -251,9 +247,10 @@ function updateFavBtn(add, remove, movie) {
       });
       console.log(data);
         
-  };
+};
 
-  topRateEl.addEventListener("click" , ()=>{
+
+topRateEl.addEventListener("click" , ()=>{
     onFavorite = false;
     onTopRated = true;
     topPage = 1
@@ -261,15 +258,15 @@ function updateFavBtn(add, remove, movie) {
     searchEl.classList.add("hidden");
     titleEl.textContent = "TOP RARED";
     topRated();
-  });
+});
   
-  searchNameBtn.addEventListener("click" , ()=>{
+searchNameBtn.addEventListener("click" , ()=>{
     onFavorite = false;
     buttonListEl.classList.add("hidden");
     searchByName(inputTitleValue.value);
-  });
+});
 
-  searchIdBtn.addEventListener("click" , async ()=>{
+searchIdBtn.addEventListener("click" , async ()=>{
     onFavorite = false;
     buttonListEl.classList.add("hidden");
     const data = []
@@ -280,18 +277,18 @@ function updateFavBtn(add, remove, movie) {
       containerEl.innerHTML = `This movie does not exist`
     }
     inputIdValue.value = ``;
-  });
+});
   
-  favoriteBtn.addEventListener("click" , async ()=>{
+favoriteBtn.addEventListener("click" , async ()=>{
     onFavorite = true;
     onTopRated = false;
     titleEl.textContent = "FAVORITE";
     buttonListEl.classList.add("hidden");
     searchEl.classList.add("hidden");
     renderFav();
-  });
+});
 
-  iconBtn.addEventListener("click" , async ()=>{
+iconBtn.addEventListener("click" , async ()=>{
     onFavorite = false;
     onTopRated = false;
     mainPage = 1
@@ -299,9 +296,9 @@ function updateFavBtn(add, remove, movie) {
     searchEl.classList.remove("hidden");
     titleEl.textContent = "HOME PAGE";
     homePage();
-  });
+});
 
-  buttonListEl.addEventListener("click" , function(e){
+buttonListEl.addEventListener("click" , function(e){
     if (e.target.tagName === 'BUTTON'){ 
     if(!onTopRated){
       mainPage = e.target.textContent;
@@ -319,14 +316,14 @@ function updateFavBtn(add, remove, movie) {
       })
     }
   }
-  })
+})
 
-  ordersBtn.addEventListener("click" , ()=>{
+ordersBtn.addEventListener("click" , ()=>{
     titleEl.textContent = "ORDERS";
     buttonListEl.classList.add("hidden");
     searchEl.classList.add("hidden");
     getOrders();
-  })
+})
 
-
+  saveTheData();
  
