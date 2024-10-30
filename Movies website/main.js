@@ -256,6 +256,7 @@ function updateFavBtn(add, remove, movie) {
   topRateEl.addEventListener("click" , ()=>{
     onFavorite = false;
     onTopRated = true;
+    topPage = 1
     buttonListEl.classList.remove("hidden");
     searchEl.classList.add("hidden");
     titleEl.textContent = "TOP RARED";
@@ -293,6 +294,7 @@ function updateFavBtn(add, remove, movie) {
   iconBtn.addEventListener("click" , async ()=>{
     onFavorite = false;
     onTopRated = false;
+    mainPage = 1
     buttonListEl.classList.remove("hidden");
     searchEl.classList.remove("hidden");
     titleEl.textContent = "HOME PAGE";
