@@ -56,9 +56,14 @@ const saveTheData = async () => {
       const response = await axios.get(
        `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${title}`
       );
-      renderMovie(response.data.results);
+      if(response.data.results.length){
+        renderMovie(response.data.results);
+      }else{
+        containerEl.innerHTML = `This movie does not exist`
+      }
     } catch(error){
-      console.error(error.message);
+      console.log(error);
+      
     }
     inputTitleValue.value = ``;
   };
@@ -70,12 +75,15 @@ const saveTheData = async () => {
       );
       return response.data;
     } catch(error){
-      console.error(error.message);
+      console.log(error);
+      
     }
     inputIdValue.value = ``;
   };
 
-  const addToFav = async (movieId)=>{
+  const addToFav = async (movieId, add , remove)=>{
+    add.classList.toggle("hidden")
+    remove.classList.toggle("hidden")
     let find = favArr.findIndex((movie)=>{
       return movie.id === movieId;
     })
@@ -194,11 +202,17 @@ function getOrders(){
     })
   }
 }
+
+function updateFavBtn(add, remove, movie) {
+    if (favArr.find(item => item.id === movie.id)) {
+        add.classList.add("hidden")
+        remove.classList.remove("hidden")
+    }
+}
   
   saveTheData();
 
   function renderMovie(data) {
-
     containerEl.innerHTML = ``;
     orderEl.innerHTML = ``;
     showOrder.innerHTML = ``;
@@ -216,15 +230,14 @@ function getOrders(){
               </div>
                     <p>${movie.title}</p> 
                     <div class="rate"> <span>Rating:</span> ${movie.vote_average}</div>
-                    <button class="fav"><span class = "add">Add to favorite</span><span class = "remove hidden">Remove from favorite</span></button>
+                    <button class="fav"><span class = "add">Add to favorite</span> <span class = "remove hidden">Remove from favorite</span></button>
           `
-         const favBtn = movieEl.querySelector(".fav");
-         const add = movieEl.querySelector(".add");
-         const remove = movieEl.querySelector(".remove");
-         favBtn.addEventListener("click" , ()=>{
-          add.classList.toggle("hidden")
-          remove.classList.toggle("hidden")
-          addToFav(movie.id);
+          const favBtn = movieEl.querySelector(".fav");
+          const add = movieEl.querySelector(".add");
+          const remove = movieEl.querySelector(".remove");
+          updateFavBtn(add, remove , movie);
+          favBtn.addEventListener("click" , ()=>{
+          addToFav(movie.id , add , remove);
          })
 
          const movieCardEl = movieEl.querySelector(".movieInner");
@@ -233,15 +246,11 @@ function getOrders(){
           titleEl.textContent = "";
           searchEl.classList.add("hidden");
           orderMovie(movie.id);
-         })
-
-
-         containerEl.appendChild(movieEl)
-        });
-
-   console.log(data);
-   console.log(orderList);
-   
+        })
+        containerEl.appendChild(movieEl)
+      });
+      console.log(data);
+        
   };
 
   topRateEl.addEventListener("click" , ()=>{
@@ -263,8 +272,13 @@ function getOrders(){
     onFavorite = false;
     buttonListEl.classList.add("hidden");
     const data = []
-    data.push(await getMovieById(inputIdValue.value));
-    renderMovie(data);
+    if(await getMovieById(inputIdValue.value)){ 
+     data.push(await getMovieById(inputIdValue.value));
+     renderMovie(data);
+    }else{
+      containerEl.innerHTML = `This movie does not exist`
+    }
+    inputIdValue.value = ``;
   });
   
   favoriteBtn.addEventListener("click" , async ()=>{
