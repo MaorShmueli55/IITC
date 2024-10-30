@@ -1,12 +1,22 @@
 import express from "express"
-import authUser from '../middleware/auth.js'
+// import authUser from '../middleware/auth.js'
 
 // Dummy DB Import
-import jokes from '../db/jokes.json' assert { type: "json" }
+import jokes from '../db/jokes.json' 
 
 const router = express.Router()
 
-router.use(authUser)
+const writeToFile = async (filename, data) => {
+    try {
+        await fs.writeFile(filename, JSON.stringify(data, null, 2))
+        return true
+    } catch (error) {
+        console.error(`Error writing to ${filename}:`, error)
+        return false
+    }
+}
+
+// router.use(authUser)
 
 // Jokes Routes
 router.get('/', (req, res) => {
