@@ -1,7 +1,7 @@
 import express from "express"
 import authUser from '../middleware/auth.js'
 
-import products from `../db/products.json` 
+import products from `../db/products.json` assert{type: "json"}
 
 const router = express.Router();
 

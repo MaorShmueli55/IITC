@@ -2,7 +2,7 @@ import express from "express"
 import authUser from '../middleware/auth.js'
 
 // Dummy DB Import
-import users from '../db/users.json' 
+import users from '../db/users.json' assert { type: "json" }
 
 const router = express.Router()
 
