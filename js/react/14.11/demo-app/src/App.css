@@ -1,18 +1,43 @@
+@font-face {
+  font-family: "Outfit";
+  src: url(../recipe-page-main/assets/fonts/outfit/static/Outfit-Regular.ttf);
+}
+
 :root{
- background-color: hsl(30, 54%, 90%);
- Stone-150: hsl(30, 18%, 87%);
- p-color: hsl(30, 10%, 34%);
- Stone-900: hsl(24, 5%, 18%);
- title-color: hsl(14, 45%, 36%);
- title-card-color : hsl(332, 51%, 32%);
- Rose-50: hsl(330, 100%, 98%);
+ --background-color: hsl(30, 54%, 90%);
+ --Stone-150: hsl(30, 18%, 87%);
+ --color-p: hsl(30, 10%, 34%);
+ --Stone-900: hsl(24, 5%, 18%);
+ --title-color: hsl(14, 45%, 36%);
+ --title-card-color : hsl(332, 51%, 32%);
+ --pre-Card: hsl(330, 100%, 98%);
+}
+
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+html{
+  background-color: var(--background-color);
+}
+
+html, body{
+  height: 100%;
+}
+
+img{
+  display: block;
 }
 
 .app{
   background-color: white;
-  border: 3px solid blue;
+  color: var(--color-p);
+  margin-inline: 30rem;
+  margin-block: 4rem;
+  border-radius: 2rem;
+  padding-inline: 3rem;
+  padding-block: 4rem;
 }
 
-html{
-  background-color: var(background-color);
-}

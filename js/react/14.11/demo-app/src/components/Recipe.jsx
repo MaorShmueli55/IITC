@@ -6,7 +6,6 @@ import Nutrition from "./Nutrition";
 const Recipe = () =>{
     return(
         <div className="recipe">
-            this is the recipe
             <Ingredients/>
             <Instructions/>
             <Nutrition/>

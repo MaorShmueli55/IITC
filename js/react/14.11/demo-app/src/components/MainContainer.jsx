@@ -1,13 +1,12 @@
 import React from "react";
-import Head from "./Head";
-import "./Head.css"
+import Head from "./Head/Head";
+import "./Head/Head.jsx"
 import "./MainContainer.css"
 import Recipe from "./Recipe";
 
 const MainContainer = () =>{
     return( 
         <div className = "main-container">
-            main-container
             <Head/>
             <Recipe/>
         </div>

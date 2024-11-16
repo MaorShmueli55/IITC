@@ -1,0 +1,10 @@
+.title{
+    color: var(--title-color);
+    font-weight: 600;
+    font-size: 1.5rem;
+}
+
+hr{
+    color: var(--color-p);
+    margin-block: 1.5rem;
+}
