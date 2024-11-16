@@ -32,12 +32,16 @@ img{
 }
 
 .app{
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background-color: white;
   color: var(--color-p);
   margin-inline: 30rem;
-  margin-block: 4rem;
+  margin-block: 3rem;
   border-radius: 2rem;
   padding-inline: 3rem;
-  padding-block: 4rem;
+  padding-block: 2rem;
+  margin-bottom: 3rem;
 }
 
