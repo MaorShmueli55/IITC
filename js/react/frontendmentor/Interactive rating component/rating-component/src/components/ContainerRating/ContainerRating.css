@@ -1,0 +1,75 @@
+.star{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--Dark-Blue-num);
+    height: 2rem;
+    width: 2rem;
+    border-radius: 50%;
+}
+
+.title{
+    color: var(--White-title);
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+p{
+    font-size: 15px;
+}
+
+button{
+    background-color: var(--Orange);
+    letter-spacing: 0.2rem;
+    width: 100%;
+    font-weight: 600;
+    border-radius: 1rem;
+    padding: 0.7rem;
+    border: none;
+}
+
+button:hover{
+    background-color: var(--White-title);
+    cursor:pointer;
+}
+
+.rating-num{
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 0.3rem;
+}
+
+.container {
+    max-width: 310px;
+    margin-bottom: 1rem;
+    border-radius: 1rem;
+    padding: 1.5rem;
+    background-color: var(--Dark-Blue-card);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.rating-num div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--Dark-Blue-num);
+    height: 1.5rem;
+    width: 1.5rem;
+    border-radius: 50%;
+    text-align: center;
+    padding: 1rem;
+    margin-block: 0.5rem;
+}
+
+.rating-num div:hover{
+    background-color: var(--Orange);
+    cursor:pointer;
+    color:black;
+}
+
+div .selected-rating {
+    background-color: var(--White-title);
+    color: black;
+}
