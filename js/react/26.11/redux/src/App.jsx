@@ -7,12 +7,10 @@ function App() {
 
   return (
     <>
-    <Provider store={store}>
       <div style={{textAlign: "center" , marginTop: "50px"}}>
         <h1>Redux To-Do List</h1>
         <TodoList/>
       </div>
-    </Provider>
     </>
   )
 }

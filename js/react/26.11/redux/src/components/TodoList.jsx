@@ -1,15 +1,11 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  addTodo,
-  toggleTodo,
-  deleteTodo,
-} from "../store/actions/TodoAction.js";
+import { addTodo, deleteTodo, toggleTodo } from "../store/slices/todoSlice";
 
 function TodoList() {
   const [newTodo, setNewTodo] = useState("");
   const dispatch = useDispatch();
-  const todos = useSelector((state) => state.todos); // Access the todos from Redux store
+  const todos = useSelector((state) => state.todo.todo); // Access the todos from Redux store
 
   const handleAddTodo = () => {
     if (newTodo.trim() !== "") {
